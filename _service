@@ -1,2 +1,14 @@
 <services>
+	<service name="obs_scm">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/gentoo/portage.git</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">portage-(.*)</param>
+	</service>
+	<service name="set_version" />
+	<service name="tar" mode="buildtime" />
+	<service name="recompress" mode="buildtime">
+		<param name="file">*.tar</param>
+		<param name="compression">gz</param>
+	</service>
 </services>
