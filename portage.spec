@@ -21,8 +21,9 @@ BuildRequires:  gcc
 BuildRequires:  xmlto
 BuildRequires:  python3-sphinx
 BuildRequires:  fdupes
-Requires:       (env or coreutils)
-Requires:       python
+Requires:       bash
+Requires:       (coreutils or env)
+Requires:       (python-unversioned-command or python)
 BuildArch:      noarch
 
 # Fill in the actual package description to submit package to Fedora
