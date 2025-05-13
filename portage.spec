@@ -21,7 +21,7 @@ BuildRequires:  gcc
 BuildRequires:  xmlto
 BuildRequires:  python3-sphinx
 BuildRequires:  fdupes
-Requires:       env
+Requires:       (env or coreutils)
 Requires:       python
 BuildArch:      noarch
 
