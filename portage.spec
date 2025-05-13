@@ -25,6 +25,9 @@ Requires:       bash
 Requires:       (coreutils or env)
 Requires:       (python-unversioned-command or python)
 BuildArch:      noarch
+Requires(post): shadow-utils
+Requires(post): sed
+Requires(post): coreutils
 
 # Fill in the actual package description to submit package to Fedora
 %global _description %{expand:
@@ -151,6 +154,14 @@ Links
 %build
 %meson
 %meson_build
+
+%post
+useradd -r -u 250 -g 250 -d /var/tmp/portage -s /bin/false portage
+groupadd -g 250 portage
+mkdir -pv %{_sysconfdir}
+cp -RTfvpu %{_datadir}/%{name}/config %{_sysconfdir}/%{name}
+dir="$(cat /etc/portage/repos.conf | sed -n 's~location\s*=\s*\(.*\)\s*~\1~pg;')/profiles"
+mkdir -pv "${dir}"
 
 
 %install
